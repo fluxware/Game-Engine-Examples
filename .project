@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <projectDescription>
+<<<<<<< HEAD
 	<name>Game-Engine-Examples</name>
+=======
+	<name>GameEngineExamples</name>
+>>>>>>> 77709e88638e686b506815592f1f7bc339f695da
 	<comment></comment>
 	<projects>
 	</projects>
