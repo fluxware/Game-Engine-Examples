@@ -36,14 +36,15 @@ public class Particle extends Sprite
 	{
 		super.update(frame, total);
 		
-		LinkedList<Sprite> c = Collision.hasCollided(this, room.getSprites(), false);
+		LinkedList<Sprite> c = Collision.hasCollided(this, room.getSprites(), GasExample.pixelPerfect);
 		
 		if(c.isEmpty() == false)
 		{
 			randomDirection();
+			System.out.println("Collided");
 		}
 		
-		if(this.getX() < 0 || this.getX() > room.getWidth() || this.getY() < 0 || this.getY() >= this.getWidth())
+		if(this.getX() < 0 || this.getX() > 800 || this.getY() < 0 || this.getY() > 800)
 		{
 			randomDirection();
 		}
@@ -54,7 +55,7 @@ public class Particle extends Sprite
 	
 	private void randomDirection()
 	{
-		xd = ran.nextInt(41) - 20;
-		yd = ran.nextInt(41) - 20;
+		xd = ran.nextInt(11) - 5;
+		yd = ran.nextInt(11) - 5;
 	}
 }
