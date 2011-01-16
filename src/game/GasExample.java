@@ -15,18 +15,20 @@ public class GasExample implements KeyListener
 {
 	private Room room;
 	private Random ran = new Random();
-
+	public static boolean pixelPerfect = false; 
 	
 	public GasExample(boolean pixelPerfect, int number)
 	{
 		room = new Room(800, 800, 1);
+		
+		GasExample.pixelPerfect = pixelPerfect;
 		
 		for(int i = 0; i < number; i++)
 		{
 			room.addSprite(new Particle(ran.nextInt(room.getWidth()), ran.nextInt(room.getHeight()), room));
 		}
 		
-		Game g = new Game(room, pixelPerfect, new Dimension(800, 800), "Gas Test");
+		Game g = new Game(room, false, new Dimension(800, 800), "Gas Test");
 		g.addKeyListener(this);
 	}
 
