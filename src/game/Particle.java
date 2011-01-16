@@ -41,7 +41,6 @@ public class Particle extends Sprite
 		if(c.isEmpty() == false)
 		{
 			randomDirection();
-			System.out.println("Collided");
 		}
 		
 		if(this.getX() < 0 || this.getX() > 800 || this.getY() < 0 || this.getY() > 800)
