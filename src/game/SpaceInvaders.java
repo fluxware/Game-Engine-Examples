@@ -10,11 +10,6 @@ import level.Room;
 import room.Intro;
 import room.Stage1;
 import sprites.Player;
-import sprites.Enemy;
-import sprites.Player;
-import sprites.PlayerBullet;
-import sprites.Sprite;
-import util.ImageUtil;
 
 public class SpaceInvaders implements KeyListener
 {
