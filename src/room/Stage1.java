@@ -49,14 +49,12 @@ public class Stage1 extends Room implements KeyListener
 		if(totalBaddies <= 0)
 		{
 			s.setRoom(new End(this.getSprites(), s));
-			System.out.println("All gone!");
 		}
 	}
 	
 	public void removeBaddie()
 	{
 		totalBaddies--;
-		System.out.println("Baddie #" + totalBaddies + " Removed");
 	}
 	
 	/*
