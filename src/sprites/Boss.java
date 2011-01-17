@@ -42,6 +42,8 @@ public class Boss extends AnimatedSprite
 
 	public void update(long frame, long total)
 	{
+		super.update(frame, total);
+		
 		if(moveDown)
 		{
 			this.setY(this.getY() + 1);
@@ -71,7 +73,7 @@ public class Boss extends AnimatedSprite
 		
 		if(time.hasRung())
 		{
-			r.addSprite(new EnemyBullet(this.getX() + 70, this.getY() + 60, ran.nextInt(6)-3, ran.nextInt(5) + 1, r));
+			r.addSprite(new EnemyBullet(this.getX() + 70, this.getY() + 60, (ran.nextDouble()-.5)*10, (ran.nextDouble())*10, r));
 		}
 	}
 

@@ -14,22 +14,31 @@ public class EnemyBullet extends Sprite
 	
 	private Room room;
 	
-	private int xDir = 0;
-	private int yDir = 5;
+	private double xDir = 0;
+	private double yDir = 5;
+	
+	private double curX = 0;
+	private double curY = 0;
 	
 	public EnemyBullet(int x, int y, Room r)
 	{
 		super(img(), x, y, 1);
 		
+		curX = x;
+		curY = y;
+		
 		room = r; 
 	}
 	
-	public EnemyBullet(int x, int y, int xSpeed, int ySpeed, Room r)
+	public EnemyBullet(int x, int y, double xSpeed, double ySpeed, Room r)
 	{
 		super(img(), x, y, 1);
 		
 		xDir = xSpeed;
 		yDir = ySpeed;
+		
+		curX = x;
+		curY = y;
 		
 		room = r;
 	}
@@ -38,8 +47,11 @@ public class EnemyBullet extends Sprite
 	{
 		super.update(frame, total);
 		
-		this.setX(this.getX() + xDir);
-		this.setY(this.getY() + yDir);
+		curX += xDir;
+		curY += yDir;
+		
+		this.setX((int)curX);
+		this.setY((int)curY);
 		
 		if(this.getX() < -10 || this.getX() > 810 || this.getY() > 810)
 		{
