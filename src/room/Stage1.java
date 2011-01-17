@@ -3,7 +3,6 @@ package room;
 import game.SpaceInvaders;
 
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
 import level.Room;
 import sprites.Enemy;
@@ -12,7 +11,7 @@ import sprites.PlayerBullet;
 import sprites.Sprite;
 import util.ImageUtil;
 
-public class Stage1 extends Room implements KeyListener
+public class Stage1 extends Room
 {
 	private Player player;
 	
@@ -38,7 +37,7 @@ public class Stage1 extends Room implements KeyListener
 		{
 			for(int j = 0; j < 5; j++)
 			{
-				this.addSprite(new Enemy(i * 50, j * 64));
+				this.addSprite(new Enemy(i * 50, j * 64, this));
 				totalBaddies++;
 			}
 		}
@@ -48,7 +47,7 @@ public class Stage1 extends Room implements KeyListener
 	{
 		if(totalBaddies <= 0)
 		{
-			s.setRoom(new End(this.getSprites(), s));
+			s.setRoom(new End(player, this.getSprites(), s));
 		}
 	}
 	
@@ -70,13 +69,13 @@ public class Stage1 extends Room implements KeyListener
 		//If the player presses the Left arrow, move the Player character 10px to the left.
 		if(e.getKeyCode() == KeyEvent.VK_LEFT)
 		{
-			player.setX(player.getX() - 10);
+			player.moveLeft();
 		}
 		
 		//If the player presses the right arrow, move the Player character 10px to the right.
 		if(e.getKeyCode() == KeyEvent.VK_RIGHT)
 		{
-			player.setX(player.getX() + 10);
+			player.moveRight();
 		}
 		
 		//If the player presses space, create a new PlayerBullet.
@@ -86,9 +85,4 @@ public class Stage1 extends Room implements KeyListener
 		}
 		
 	}
-
-	@Override
-	public void keyReleased(KeyEvent arg0) {}
-	@Override
-	public void keyTyped(KeyEvent arg0) {}
 }

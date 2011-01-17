@@ -3,7 +3,9 @@ package sprites;
 import java.awt.image.BufferedImage;
 import java.util.Random;
 
+import level.Room;
 import util.ImageUtil;
+import util.Timer;
 
 public class Enemy extends Sprite
 {
@@ -11,9 +13,16 @@ public class Enemy extends Sprite
 	
 	private boolean right = true;
 	
-	public Enemy(int x, int y)
+	private Room room;
+	private Timer time;
+	
+	public Enemy(int x, int y, Room r)
 	{
 		super(Enemy.getImage(), x, y, 1);
+		
+		room = r;
+		
+		time = new Timer(this.r.nextInt(2000) + 3000);
 	}
 	
 	public void update(long frame, long total)
@@ -41,6 +50,12 @@ public class Enemy extends Sprite
 				
 				right = !right;
 			}
+		}
+		
+		if(time.hasRung())
+		{
+			room.addSprite(new EnemyBullet(this.getX() + (this.getWidth() << 2), this.getY() + (this.getHeight() << 2), room));
+			time = new Timer(r.nextInt(5000) + 3000);
 		}
 	}
 	
