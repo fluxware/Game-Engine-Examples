@@ -1,5 +1,7 @@
 package room;
 
+import game.SpaceInvaders;
+
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -14,11 +16,16 @@ public class Stage1 extends Room implements KeyListener
 {
 	private Player player;
 	
-	public Stage1(Player player)
+	private int totalBaddies = 0;
+	
+	private SpaceInvaders s;
+	
+	public Stage1(Player player, SpaceInvaders s)
 	{
 		super(600, 800, 3);
 		
 		this.player = player;
+		this.s = s;
 		
 		Sprite background = new Sprite(ImageUtil.getBufferedImage("/resources/background.png"), 0, 0, 0);
 
@@ -32,8 +39,24 @@ public class Stage1 extends Room implements KeyListener
 			for(int j = 0; j < 5; j++)
 			{
 				this.addSprite(new Enemy(i * 50, j * 64));
+				totalBaddies++;
 			}
 		}
+	}
+	
+	public void roomClear()
+	{
+		if(totalBaddies <= 0)
+		{
+			s.setRoom(new End(this.getSprites(), s));
+			System.out.println("All gone!");
+		}
+	}
+	
+	public void removeBaddie()
+	{
+		totalBaddies--;
+		System.out.println("Baddie #" + totalBaddies + " Removed");
 	}
 	
 	/*

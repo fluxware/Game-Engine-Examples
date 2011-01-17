@@ -51,12 +51,17 @@ public class SpaceInvaders implements KeyListener
 		//If the player presses space, create a new PlayerBullet.
 		if(intro && e.getKeyCode() == KeyEvent.VK_SPACE)
 		{
-			Stage1 s1 = new Stage1(player);
+			Stage1 s1 = new Stage1(player, this);
 			game.setRoom(s1);
 			game.addKeyListener(s1);
 			intro = false;
 		}
 		
+	}
+	
+	public void setRoom(Room r)
+	{
+		game.setRoom(r);
 	}
 
 	@Override

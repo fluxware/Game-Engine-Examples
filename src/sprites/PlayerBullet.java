@@ -3,6 +3,7 @@ package sprites;
 import java.util.LinkedList;
 
 import level.Room;
+import room.Stage1;
 import util.ImageUtil;
 import collision.Collision;
 
@@ -31,6 +32,8 @@ public class PlayerBullet extends Sprite
 			{
 				r.removeSprite(this);
 				r.removeSprite(s);
+				((Stage1)r).removeBaddie();
+				((Stage1)r).roomClear();
 			}
 		}
 		
