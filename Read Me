@@ -1,3 +1,6 @@
-======= Credits =======
-Explosion Effect: http://opengameart.org/content/explosion-with-alpha
-Original Ship Designs: http://opengameart.org/content/spaceship-set-32x32px
+This is the master branch.
+
+It merely contains:
+A jar with source and class files (for development)
+A jar with only class files (for distribution)
+Full JavaDocs.
